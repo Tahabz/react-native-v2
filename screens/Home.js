@@ -11,6 +11,7 @@ const COLOR_PALETTES = [
 
 export default function Home({ navigation }) {
   const [palettes, setPalettes] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const getColors = useCallback(async () => {
     const res = await fetch(
@@ -21,6 +22,14 @@ export default function Home({ navigation }) {
       setPalettes(palettesRes);
     }
   }, []);
+
+  const handleRefresh = useCallback(async () => {
+    setIsRefreshing(true);
+    await getColors();
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 600);
+  }, [getColors]);
 
   useEffect(() => {
     getColors();
@@ -39,6 +48,8 @@ export default function Home({ navigation }) {
           }}
         />
       )}
+      refreshing={isRefreshing}
+      onRefresh={handleRefresh}
     />
   );
 }
