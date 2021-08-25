@@ -1,13 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 import PalettePreview from '../components/PalettePreview';
-import { RAINBOW, FRONTEND_MASTERS, SOLARIZED } from '../data/colors';
-
-const COLOR_PALETTES = [
-  { paletteName: 'Solarized', colors: SOLARIZED },
-  { paletteName: 'Frontend Masters', colors: FRONTEND_MASTERS },
-  { paletteName: 'Rainbow', colors: RAINBOW },
-];
 
 export default function Home({ navigation }) {
   const [palettes, setPalettes] = useState([]);
@@ -26,9 +19,7 @@ export default function Home({ navigation }) {
   const handleRefresh = useCallback(async () => {
     setIsRefreshing(true);
     await getColors();
-    setTimeout(() => {
-      setIsRefreshing(false);
-    }, 600);
+    setIsRefreshing(false);
   }, [getColors]);
 
   useEffect(() => {
