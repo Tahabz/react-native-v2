@@ -14,6 +14,11 @@ export default function PalettePreview({ colors, paletteName, onPress }) {
         )}
         horizontal={true}
         keyExtractor={(item) => item.colorName}
+        ListHeaderComponent={
+          <TouchableOpacity>
+            <Text>hey</Text>
+          </TouchableOpacity>
+        }
       />
     </TouchableOpacity>
   );

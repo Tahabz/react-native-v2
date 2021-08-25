@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Text, TouchableOpacity } from 'react-native';
 import PalettePreview from '../components/PalettePreview';
 
 export default function Home({ navigation }) {
