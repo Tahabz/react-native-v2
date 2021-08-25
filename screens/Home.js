@@ -41,6 +41,11 @@ export default function Home({ navigation }) {
       )}
       refreshing={isRefreshing}
       onRefresh={handleRefresh}
+      ListHeaderComponent={
+        <TouchableOpacity onPress={() => navigation.navigate('Modal')}>
+          <Text>hey</Text>
+        </TouchableOpacity>
+      }
     />
   );
 }
